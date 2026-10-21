@@ -12,7 +12,7 @@ Follow the [architecture workshop](docs/architecture.md) alongside the numbered 
 6. Add demo videos and verify the complete user journey.
 7. Package the app and add one-command startup.
 
-This checkout contains steps 1–5.
+This checkout contains steps 1–6.
 
 ## Run this stage
 
@@ -41,3 +41,5 @@ Open http://127.0.0.1:5173. The API is at http://127.0.0.1:8080.
 Run `./gradlew test` inside `backend`, and `npm run test -- --run` plus `npm run build` inside `frontend`.
 
 Run `./gradlew ffmpegTest` inside `backend` to exercise real media processing.
+
+Use `./gradlew bootRun --args='--spring.profiles.active=demo'` for three generated demo films. Packaging and the single-command launcher arrive in step 7.
