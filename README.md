@@ -12,4 +12,32 @@ Follow the [architecture workshop](docs/architecture.md) alongside the numbered 
 6. Add demo videos and verify the complete user journey.
 7. Package the app and add one-command startup.
 
-This checkout contains steps 1–1.
+This checkout contains steps 1–2.
+
+## Run this stage
+
+Requires JDK 21 and Node.js 22.12+ with npm. From the project root:
+
+```sh
+npm ci
+npm --prefix frontend ci
+```
+
+Start the API in one terminal:
+
+```sh
+cd backend
+./gradlew bootRun
+```
+
+Start the browser client in another terminal:
+
+```sh
+npm run dev
+```
+
+Open http://127.0.0.1:5173. The API is at http://127.0.0.1:8080.
+
+Run `./gradlew test` inside `backend`, and `npm run test -- --run` plus `npm run build` inside `frontend`.
+
+The catalog starts empty. Upload, processing, and playback arrive in the next steps.
