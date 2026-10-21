@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import AppHeader from "./components/AppHeader";
 import BrowsePage from "./pages/BrowsePage";
+const UploadPage = lazy(() => import("./pages/UploadPage"));
 export default function App() {
   const [menu, setMenu] = useState(false);
   const location = useLocation();
@@ -83,6 +84,7 @@ export default function App() {
           >
             <Routes>
               <Route path="/" element={<BrowsePage />} />
+              <Route path="/upload" element={<UploadPage />} />
               <Route
                 path="*"
                 element={
