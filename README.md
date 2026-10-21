@@ -12,7 +12,7 @@ Follow the [architecture workshop](docs/architecture.md) alongside the numbered 
 6. Add demo videos and verify the complete user journey.
 7. Package the app and add one-command startup.
 
-This checkout contains steps 1–3.
+This checkout contains steps 1–4.
 
 ## Run this stage
 
@@ -40,4 +40,4 @@ Open http://127.0.0.1:5173. The API is at http://127.0.0.1:8080.
 
 Run `./gradlew test` inside `backend`, and `npm run test -- --run` plus `npm run build` inside `frontend`.
 
-Uploads can resume and queue durable work. The processing worker is introduced in step 4.
+Run `./gradlew ffmpegTest` inside `backend` to exercise real media processing.
