@@ -12,7 +12,7 @@ Follow the [architecture workshop](docs/architecture.md) alongside the numbered 
 6. Add demo videos and verify the complete user journey.
 7. Package the app and add one-command startup.
 
-This checkout contains steps 1–4.
+This checkout contains steps 1–5.
 
 ## Run this stage
 
