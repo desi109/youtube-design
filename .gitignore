@@ -1,0 +1,13 @@
+.DS_Store
+.gradle/
+build/
+backend/bin/
+*.class
+node_modules/
+dist/
+data/
+test-results/
+playwright-report/
+*.log
+frontend/e2e/fixtures/
+*.tsbuildinfo
