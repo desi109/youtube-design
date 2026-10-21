@@ -5,6 +5,8 @@ backend/bin/
 *.class
 node_modules/
 dist/
+dist-pages/
+.pages-assets/
 data/
 test-results/
 playwright-report/

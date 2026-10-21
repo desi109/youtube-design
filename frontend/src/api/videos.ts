@@ -1,4 +1,6 @@
 import { request } from "./client";
+import { isPagesDemo } from "../demo/mode";
+import { listDemoVideos, getDemoVideo, getDemoRelated } from "../demo/catalog";
 export interface Rendition {
   label: string;
   width: number;
@@ -23,11 +25,17 @@ export interface VideoPage {
   totalPages: number;
 }
 export const listVideos = (query = "", page = 0, signal?: AbortSignal) =>
-  request<VideoPage>(`/api/videos?q=${encodeURIComponent(query)}&page=${page}&size=24`, { signal });
+  isPagesDemo
+    ? listDemoVideos(query, page, signal)
+    : request<VideoPage>(`/api/videos?q=${encodeURIComponent(query)}&page=${page}&size=24`, {
+        signal,
+      });
 export const getVideo = (id: string, signal?: AbortSignal) =>
-  request<VideoDto>(`/api/videos/${id}`, { signal });
+  isPagesDemo ? getDemoVideo(id, signal) : request<VideoDto>(`/api/videos/${id}`, { signal });
 export const getRelatedVideos = (id: string, signal?: AbortSignal) =>
-  request<VideoDto[]>(`/api/videos/${id}/related?limit=12`, { signal });
+  isPagesDemo
+    ? getDemoRelated(id, signal)
+    : request<VideoDto[]>(`/api/videos/${id}/related?limit=12`, { signal });
 export function duration(seconds: number) {
   const whole = Math.floor(seconds);
   return `${Math.floor(whole / 60)}:${String(whole % 60).padStart(2, "0")}`;

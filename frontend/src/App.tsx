@@ -13,8 +13,11 @@ import {
 } from "lucide-react";
 import AppHeader from "./components/AppHeader";
 import BrowsePage from "./pages/BrowsePage";
+import { isPagesDemo, projectUrl } from "./demo/mode";
 const WatchPage = lazy(() => import("./pages/WatchPage"));
-const UploadPage = lazy(() => import("./pages/UploadPage"));
+const UploadPage = lazy(() =>
+  isPagesDemo ? import("./pages/DemoUploadPage") : import("./pages/UploadPage"),
+);
 export default function App() {
   const [menu, setMenu] = useState(false);
   const location = useLocation();
@@ -22,6 +25,16 @@ export default function App() {
   return (
     <>
       <AppHeader onMenu={() => setMenu((v) => !v)} menuOpen={menu} />
+      {isPagesDemo && (
+        <div className="demo-notice" role="note">
+          <span>
+            <strong>Demo library</strong> · Explore three original sample films.
+          </span>
+          <a href={`${projectUrl}#quick-start--one-command`}>
+            Run the full app <ArrowUpRight size={14} />
+          </a>
+        </div>
+      )}
       <div className={`app-shell ${watch ? "watch-shell" : ""}`}>
         <aside className={`sidebar ${menu ? "open" : ""}`} aria-label="Main navigation">
           <nav onClick={() => setMenu(false)}>
@@ -75,7 +88,7 @@ export default function App() {
         {menu && (
           <button className="menu-scrim" aria-label="Close menu" onClick={() => setMenu(false)} />
         )}
-        <main id="main-content">
+        <main id="main-content" tabIndex={-1}>
           <Suspense
             fallback={
               <div className="empty-state" role="status">

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "horizon",
+    "scene": 0,
+    "title": "A quiet horizon — a study in stillness",
+    "description": "An original illustrated film exploring light, reflection, and a quiet landscape. Part of Frame’s sample library.",
+    "tags": ["nature", "film", "travel"]
+  },
+  {
+    "id": "chromatic-drift",
+    "scene": 1,
+    "title": "Chromatic drift — color in motion",
+    "description": "A moving study of color and curved forms. An original illustrated film from Frame’s sample library.",
+    "tags": ["art", "design", "film"]
+  },
+  {
+    "id": "after-hours",
+    "scene": 2,
+    "title": "After hours — the city in miniature",
+    "description": "A small city beneath a night sky. An original illustrated film from Frame’s sample library.",
+    "tags": ["art", "technology", "film"]
+  }
+]

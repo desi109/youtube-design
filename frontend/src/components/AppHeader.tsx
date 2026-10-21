@@ -27,7 +27,18 @@ export default function AppHeader({ onMenu, menuOpen }: { onMenu: () => void; me
   }
   return (
     <header className="app-header">
-      <a className="skip-link" href="#main-content">
+      <a
+        className="skip-link"
+        href="#main-content"
+        onClick={(event) => {
+          const content = document.getElementById("main-content");
+          if (content) {
+            event.preventDefault();
+            content.focus();
+            content.scrollIntoView();
+          }
+        }}
+      >
         Skip to content
       </a>
       <div className="brand-group">

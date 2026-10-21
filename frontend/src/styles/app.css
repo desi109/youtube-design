@@ -1640,3 +1640,53 @@ svg {
     scroll-behavior: auto !important;
   }
 }
+
+.demo-notice {
+  margin-left: 224px;
+  padding: 14px 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  border-bottom: 1px solid var(--line);
+  background: #211b1b;
+  color: #c5bdbb;
+  font-size: 13px;
+}
+.demo-notice strong {
+  color: #fff;
+}
+.demo-notice a {
+  color: #ff8b7e;
+  white-space: nowrap;
+}
+.demo-upload {
+  min-height: 55vh;
+  gap: 24px;
+}
+.demo-upload h1 {
+  font-size: clamp(28px, 5vw, 42px);
+}
+.demo-upload p {
+  max-width: 560px;
+  line-height: 1.7;
+}
+@media (max-width: 1250px) {
+  .demo-notice {
+    margin-left: 190px;
+    padding: 14px 26px;
+  }
+}
+@media (max-width: 1020px) {
+  .demo-notice {
+    margin-left: 80px;
+    padding: 14px 24px;
+  }
+}
+@media (max-width: 760px) {
+  .demo-notice {
+    margin-left: 0;
+    padding: 12px 20px;
+  }
+}

@@ -112,6 +112,8 @@ JSON errors contain `code`, `message`, and `requestId`. Validation/capability/st
 
 ## Deployment roadmap from the brief
 
+The repository also publishes a **static GitHub Pages demo**. Its catalog and public sample films are prepared at build time; Java and FFmpeg are build dependencies, not services running on Pages. It demonstrates browsing and playback without exercising server-side upload, authorization, or recovery. The local application and the proposed service architecture below have different runtime responsibilities. See [Pages deployment](../README.md#github-pages-deployment) for the boundary and build commands.
+
 Keep these changes separate from the local implementation:
 
 1. Replace local original/output storage with object storage and direct pre-signed multipart uploads.

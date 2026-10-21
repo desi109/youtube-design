@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "start": "sh ./start.sh",
+    "build:pages": "node scripts/build-pages-demo.mjs",
     "dev": "npm --prefix frontend run dev",
     "build": "npm --prefix frontend run build"
   },

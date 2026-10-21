@@ -6,6 +6,10 @@ Includes browse/search, related videos, resumable uploads up to **1 GB (1,000,00
 
 The [architecture workshop](docs/architecture.md) connects this implementation to requirements, capacity estimates, diagrams, data models, failure analysis, and hands-on architecture exercises for mid-level and senior developers.
 
+## Online demo
+
+**[Open Frame on GitHub Pages](https://desi109.github.io/youtube-design/)** to browse, search, and watch three original sample films, switch between 360p/720p, and explore related videos. The public demo uses prepared media; run the complete application below to upload and process your own videos.
+
 ## Quick start — one command
 
 With **JDK 21** and **Node.js/npm** installed (see [requirements](#requirements)), run this from `youtube-design`:
@@ -140,11 +144,30 @@ Read the chapters in order, or use them as references while exploring the code:
 
 The original [Design YouTube system-design chapter](https://github.com/desi109/cheat-sheets/blob/master/system-design/15-design-YouTube.md) supplies the starting problem and illustrative workload assumptions. The workshop applies those ideas to this repository and develops exercises for making and defending architectural decisions.
 
-The Git history follows seven implementation steps: architecture → catalog and storage → resumable uploads → processing and recovery → encrypted playback → demos and verification → packaging and startup. Each commit message explains its scope and the relevant architecture chapters. Read the commits in build order with:
+The Git history follows the implementation order: architecture → catalog and storage → resumable uploads → processing and recovery → encrypted playback → demos and verification → packaging and startup → public Pages demo. Each numbered commit explains its scope. Read the commits in build order with:
 
 ```sh
 git log --reverse --oneline
 ```
+
+## GitHub Pages deployment
+
+The [Pages workflow](.github/workflows/pages.yml) runs on pushes to `master` and can be started manually from Actions. It generates the three sample films, checks the frontend, builds the static site, verifies playback/navigation in Chromium, and publishes `frontend/dist-pages`. The official GitHub Actions are pinned to specific commits.
+
+Pages uses the repository path `/youtube-design/` and hash routes such as `/#/watch/horizon`, so watch links survive reloads. The normal application still uses clean browser routes and the Java API. The two build modes have separate output directories.
+
+Sample illustrations come from the same Java drawing code as the local demo; FFmpeg creates public **unencrypted** HLS at build time. Only those generated samples and the frontend are deployed. No backend, database, uploaded originals, private keys, or runtime data are published. GitHub Pages does not run the upload/transcoding service.
+
+To build and preview the public demo locally, with the project requirements installed:
+
+```sh
+npm ci
+npm --prefix frontend ci
+npm run build:pages
+npm --prefix frontend run preview:pages
+```
+
+Open **http://127.0.0.1:4173/youtube-design/**. Run `npm --prefix frontend run e2e:pages` after building to verify the static demo; that command starts its own preview server, so stop a manual preview first. The workflow sets `PAGES_BASE_PATH` from GitHub Pages configuration. See the [GitHub Pages workflow guide](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages) and [Vite deployment guide](https://vite.dev/guide/static-deploy.html#github-pages) for the hosting conventions.
 
 ## Local deployment limits
 
