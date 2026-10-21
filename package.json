@@ -2,6 +2,7 @@
   "name": "youtube-design",
   "private": true,
   "scripts": {
+    "start": "sh ./start.sh",
     "dev": "npm --prefix frontend run dev",
     "build": "npm --prefix frontend run build"
   },

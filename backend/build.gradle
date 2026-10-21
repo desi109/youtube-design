@@ -26,3 +26,6 @@ tasks.register('ffmpegTest', Test) {
     useJUnitPlatform { includeTags 'ffmpeg' }
     shouldRunAfter test
 }
+tasks.register('frontendInstall', Exec) { workingDir '../frontend'; commandLine 'npm', 'ci' }
+tasks.register('frontendBuild', Exec) { dependsOn 'frontendInstall'; workingDir '../frontend'; commandLine 'npm', 'run', 'build' }
+tasks.named('bootJar') { dependsOn 'frontendBuild'; from('../frontend/dist') { into 'BOOT-INF/classes/static' } }
